@@ -1,7 +1,8 @@
 import eel
 import time
 from datetime import datetime, timedelta, timezone
-
+import sys
+import subprocess
 eel.init('web')
 
 @eel.expose
@@ -46,13 +47,8 @@ def load_modules():
     return done
 @eel.expose()
 def warningsound():
+    print("warning sound")
     sound("audio/danger")
-@eel.expose()
-def sdestruct(code):
-    if code=="5354":
-        speak("Warning. Jaguar system engaged")
-    else:
-        speak("Verification failed")
 @eel.expose()
 def welcome():
     try:

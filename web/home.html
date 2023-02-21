@@ -195,8 +195,13 @@ setInterval(function(){checknetwork();}, 10);
 </script>
 
 
-<button class="menuitem"> <span class="entypo-right-open"/> <p class="caption">User profile</p> </button>
-
+<button class="menuitem" id="jag"> <span class="entypo-right-open"/> <p class="caption">Jaguar5</p> </button>
+<script>
+    function jag5(){
+        go_to('jaguar5.html');
+    }
+    document.getElementById("jag").addEventListener("click", stocks);
+</script>
 
 <button class="menuitem" id="config"> <span class="entypo-right-open"/> <p class="caption">Settings</p> </button>
 <script>
