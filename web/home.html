@@ -1,186 +1,189 @@
 <!DOCTYPE html>
-<html>
-    <head>
-    <title>OMEGA</title>
-    <script type="text/javascript" src="/eel.js"></script>
-    <script type="text/javascript" src="main.js"></script>
-    <link rel="stylesheet" type="text/css" href="main-style.css">
-    </head>
-    <body>
+
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>OMEGA </title>
+  <link rel="stylesheet" href="main-style.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+  <script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+  
+
+
+<!-- partial:index.partial.html -->
 <!-- Left Menu -->
 <div id="leftmenu">
-<script>
-        window.addEventListener('load', (event) => {
-        welcome()
-    });
-</script>
+ 
+  
+  <div class="menu">
 
-<div class="menu">
-
-<div id="date_time">
-<div id="date" class="semi_arc e4">
-    <div class="semi_arc_2 e4_1">
-    <div class="counterspin4"></div>
-    </div>
+  <div id="date_time">
+    <div id="date" class="semi_arc e4">
+      <div class="semi_arc_2 e4_1">
+        <div class="counterspin4"></div>
+      </div>
 
 <script>
 
-function datefunction() {
-var d = new Date();
+  function datefunction() {
+    var d = new Date();
 document.getElementById("demodate").innerHTML = d.getDate();
 
-}
-window.addEventListener('load', (event) => {
-        datefunction()
-        });
+  }
+  window.addEventListener('load', (event) => {
+            datefunction()
+          });
 
 </script>
 <div style="font-size: 40px; margin-top: 25px;" id="demodate"></div>
 
-    <script>
-        function monthfunction() {
-        var month = new Array();
-        month[0] = "January";
-        month[1] = "February";
-        month[2] = "March";
-        month[3] = "April";
-        month[4] = "May";
-        month[5] = "June";
-        month[6] = "July";
-        month[7] = "August";
-        month[8] = "September";
-        month[9] = "October";
-        month[10] = "November";
-        month[11] = "December";
-        
-        var d = new Date();
-        var n = month[d.getMonth()];
-        document.getElementById("demomonth").innerHTML = n;
+        <script>
+          function monthfunction() {
+            var month = new Array();
+            month[0] = "January";
+            month[1] = "February";
+            month[2] = "March";
+            month[3] = "April";
+            month[4] = "May";
+            month[5] = "June";
+            month[6] = "July";
+            month[7] = "August";
+            month[8] = "September";
+            month[9] = "October";
+            month[10] = "November";
+            month[11] = "December";
+          
+            var d = new Date();
+            var n = month[d.getMonth()];
+            document.getElementById("demomonth").innerHTML = n;
+          }
+          window.addEventListener('load', (event) => {
+            monthfunction()
+          });
+          </script>
+
+
+        <div style="font-size: 25px;" id ="demomonth"></div>
+</div>
+    
+
+
+   
+
+    <div id="time" class="arc e1">
+      
+      <script>
+
+        // time in seconds
+
+        function startTime(){
+          // do this ...
+          var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+          
+            m = checkTime(m);
+          
+            document.getElementById('txt').innerHTML =
+            h + ":" + m ;
+            var t = setTimeout(startTime, 500);
         }
+        function checkTime(i) {
+            if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+            return i;
+          }
+    
+        
         window.addEventListener('load', (event) => {
-        monthfunction()
+          startTime()
+        });
+        </script>
+     
+ 
+        <div style="font-size: 23px; margin-left: -10px; margin-top: 23px;" id="txt"></div>
+        
+        <script>
+          window.addEventListener('load', (event) => {
+               setInterval(function(){
+               document.getElementById("seconds").innerHTML = (new Date()).getSeconds();
+          },1000)
+           })
+          </script>
+        <!------>
+       <!--tryna get the seconds to work without body onload=startTime(0)-->
+      <div style="font-size: 14px; margin-left: 45px; margin-top: -30px; display; inline;" id="seconds" ></div>
+
+    
+      <script>
+        function myFunctionday() {
+          var d = new Date();
+          var weekday = new Array(7);
+          weekday[0] = "Sunday";
+          weekday[1] = "Monday";
+          weekday[2] = "Tuesday";
+          weekday[3] = "Wednesday";
+          weekday[4] = "Thursday";
+          weekday[5] = "Friday";
+          weekday[6] = "Saturday";
+        
+          var n = weekday[d.getDay()];
+          document.getElementById("demoday").innerHTML = n;
+        }
+
+        window.addEventListener('load', (event) => {
+          myFunctionday()
         });
         </script>
 
-
-    <div style="font-size: 25px;" id ="demomonth"></div>
-</div>
-
-
-
-
-
-
-<div id="time" class="arc e1">
-    
-    <script>
-
-    // time in seconds
-
-    function startTime(){
-        // do this ...
-        var today = new Date();
-        var h = today.getHours();
-        var m = today.getMinutes();
+        <div style="font-size: 17px; margin-top: 10px;" id="demoday"></div>
         
-        m = checkTime(m);
-        
-        document.getElementById('txt').innerHTML =
-        h + ":" + m ;
-        var t = setTimeout(startTime, 500);
-    }
-    function checkTime(i) {
-        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-        return i;
-        }
+    </div>
+  </div>
+  
 
-    
-    window.addEventListener('load', (event) => {
-        startTime()
-    });
-    </script>
+  <p class="title">Performance</p>
+  <div class="hline title_underline"></div>
 
-
-    <div style="font-size: 23px; margin-left: -10px; margin-top: 23px;" id="txt"></div>
-    
+  <span class="menuitem entypo-chart-area" style="font-size: 30px; margin-left: 10px;">
     <script>
-        window.addEventListener('load', (event) => {
-            setInterval(function(){
-            document.getElementById("seconds").innerHTML = (new Date()).getSeconds();
-        },1000)
-        })
-        </script>
-    <!------>
-    <!--tryna get the seconds to work without body onload=startTime(0)-->
-    <div style="font-size: 14px; margin-left: 45px; margin-top: -30px; display; inline;" id="seconds" ></div>
-
-
-    <script>
-    function myFunctionday() {
-        var d = new Date();
-        var weekday = new Array(7);
-        weekday[0] = "Sunday";
-        weekday[1] = "Monday";
-        weekday[2] = "Tuesday";
-        weekday[3] = "Wednesday";
-        weekday[4] = "Thursday";
-        weekday[5] = "Friday";
-        weekday[6] = "Saturday";
-    
-        var n = weekday[d.getDay()];
-        document.getElementById("demoday").innerHTML = n;
-    }
-
-    window.addEventListener('load', (event) => {
-        myFunctionday()
-    });
+       setInterval(function(){checkcpu();}, 1000);
     </script>
-
-    <div style="font-size: 17px; margin-top: 10px;" id="demoday"></div>
-    
-</div>
-</div>
-
-
-<p class="title">Performance</p>
-<div class="hline title_underline"></div>
-
-<span class="menuitem entypo-chart-area" style="font-size: 30px; margin-left: 10px;">
-<script>
-    setInterval(function(){checkcpu();}, 1000);
-</script>
-<div class="caption" style="font-size: 20px;" id="cpuoutput"></div>
-</span> <br/>
-
-<!-------------------WORKING RAM -->
-<span class="menuitem entypo-gauge" style="font-size: 30px; margin-left: 10px;">  
-    <script>
-    setInterval(function(){checkram();}, 10
-    );
-    </script>
-      <div class="caption" style="font-size: 20px;" id="ramoutput"></div>
-  </span> 
+    <div class="caption" style="font-size: 20px;" id="cpuoutput"></div>
+  </span> <br/>
+  
+  <!-------------------WORKING RAM -->
+  <span class="menuitem entypo-gauge" style="font-size: 30px; margin-left: 10px;">  
+  <script>
+  setInterval(function(){checkram();}, 10
+  );
+  </script>
+    <div class="caption" style="font-size: 20px;" id="ramoutput"></div>
+</span> 
 
 <span class="menuitem entypo-chart-pie" style="font-size: 30px; margin-left: 10px;">  
-<script>
-setInterval(function(){checknetwork();}, 10);
-</script>
-<div class="caption" style="font-size: 20px;" id="networkoutput"></div>
+  <script>
+  setInterval(function(){checknetwork();}, 10);
+  </script>
+    <div class="caption" style="font-size: 20px;" id="networkoutput"></div>
 </span>
 
 
 
+  <br>
+    <hr style="border-color: transparent; margin: 0;"/>
+    <div class="hline" style="margin-top: 5px; margin-bottom: 5px;"></div>
+  </div>
 <br>
-<hr style="border-color: transparent; margin: 0;"/>
-<div class="hline" style="margin-top: -1px; margin-bottom: 5px;"></div>
-</div>
-<br>
-<br><br><br>
 
+
+  <!--left menu bottom bar-->
+  <!--THEY ARE FUCKING BUTTONS-->
 
 <!--left menu bottom bar-->
 <!--THEY ARE FUCKING BUTTONS-->
-<script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
 <p class="title">Menu</p>
 <div class="hline title_underline"></div>
 
@@ -203,11 +206,153 @@ setInterval(function(){checknetwork();}, 10);
     }
     document.getElementById("config").addEventListener("click",config)
 </script>
+
+</div>
+
+<!-- Right Menu -->
 <div id="rightmenu">
-    <p>Current stocks</p>
+  <p class="title" style="text-align: left; margin-left: 10px;">Commands</p>
+  <div id="particle10" class="hline"></div>
+  <div id="particle11" class="hline"></div>
+  <div id="particle12" class="vline"></div>
+
+  <!-- #######################################################################################################################################################################################################################-->
+  <textarea id="note_input" rows="12" cols="44"></textarea>
+  <script>
+    const textarea = document.querySelector("#note_input")
+    textarea.onkeypress = (event) => {
+        const keyCode = event.keyCode
+        // console.log(`${event.code} key pressed`)
+        if (keyCode == 13) {
+            //event.preventDefault()
+            // this line prevents user from starting a new line, completely optional
+            
+            let x = document.getElementById("note_input").value
+            console.log(`${event.code} key pressed`)
+            console.log(x)
+            checkcommand(x)
+            alert(x)
+
+        }
+    }
+</script>
+  
+  
 </div>
 
 
+<div id="arc_container">
+  <div class="arc_reactor">
+    <div class="case_container">
+      <div class="e7">
+        <div class="semi_arc_3 e5_1">
+          <div class="semi_arc_3 e5_2">
+            <div class="semi_arc_3 e5_3">
+              <div class="semi_arc_3 e5_4"></div>
+            </div>
+          </div>
+        </div>
+        <div class="core2"></div>
+      </div>
+      <ul class="marks">
+        <li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li>
+        <li></li><li></li><li></li><li></li><li></li><li></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- Particles -->
+<!-- Left Menu Particles -->
+<canvas id="particle1" width="20" height="500"></canvas> <script>
+var canvas = document.getElementById('particle1');
+var context = canvas.getContext('2d');
 
-    </body> 
+context.beginPath();
+context.moveTo(0, 0);
+context.lineTo(0, 70);
+context.lineTo(10, 85);
+context.lineTo(10, 135);
+context.lineTo(0, 150);
+context.lineTo(0, 480);
+context.lineTo(5, 490);
+context.lineTo(10, 490);
+context.lineTo(20, 490);
+context.lineTo(20, 250);
+context.lineTo(10, 235);
+context.lineTo(10, 185);
+context.lineTo(20, 170);
+context.lineTo(20, 40);
+context.lineTo(10, 30);
+context.lineTo(10, 20);
+
+context.closePath();
+context.lineWidth = 1;
+context.fillStyle = 'rgba(2,254,255,0.3)';
+context.fill();
+context.strokeStyle = 'transparent';
+context.stroke();
+</script>
+
+<canvas id="particle1_1" width="40" height="510"></canvas> <script>
+var canvas = document.getElementById('particle1_1');
+var context = canvas.getContext('2d');
+
+context.beginPath();
+context.lineTo(0, 0);
+context.lineTo(10, 15);
+context.lineTo(10, 65);
+context.lineTo(0, 80);
+context.lineTo(0, 0);
+
+context.closePath();
+context.lineWidth = 1;
+context.fillStyle = 'rgba(2,254,255,0.3)';
+context.fill();
+context.strokeStyle = 'transparent';
+context.stroke();
+</script>
+
+<canvas id="particle1_2" width="40" height="510"></canvas> <script>
+var canvas = document.getElementById('particle1_2');
+var context = canvas.getContext('2d');
+
+context.beginPath();
+context.lineTo(10, 80);
+context.lineTo(0, 65);
+context.lineTo(0, 15);
+context.lineTo(10, 0);
+context.lineTo(10, 80);
+
+context.closePath();
+context.lineWidth = 1;
+context.fillStyle = 'rgba(2,254,255,0.3)';
+context.fill();
+context.strokeStyle = 'transparent';
+context.stroke();
+</script>
+
+<div id="particle1_3">
+  > > > >
+</div>
+
+<div id="particle2">▶<br/>▶<br/>▶</div>
+<div id="particle3" class="vline"/>
+<div id="particle4" class="vline"/>
+<div id="particle5" class="vline"/>
+<div id="particle6" class="vline"/>
+<div id="particle7" class="vline"/>
+<div id="particle8" class="vline"/>
+<div id="particle9" class="vline"/>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+</body>
 </html>
+
