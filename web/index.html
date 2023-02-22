@@ -9,7 +9,23 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body onload="load_modules()">
-	<div class="omega">OMEGA</div>
+	<div class="omega" id="target"></div>
+	<script>
+        var i = 0;
+        var txt = 'OMEGA';
+        var speed = 170;
+        
+        function typeWriter() {
+            if (i < txt.length) {
+            document.getElementById("target").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+            }
+        }
+        window.addEventListener('load', (event) => {
+                typeWriter()
+                });
+        </script>
 	<div class="loading">
 		<div class="spinner"></div>
 		<div class="loading-text">Loading...</div>
