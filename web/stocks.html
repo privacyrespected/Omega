@@ -204,32 +204,22 @@ document.getElementById("config").addEventListener("click",config)
 
 <!-- Right Menu -->
 <div id="rightmenu">
-<p class="title" style="text-align: left; margin-left: 10px;">Commands</p>
+<p class="title" style="text-align: left; margin-left: 10px;">Index</p>
 <div id="particle10" class="hline"></div>
 <div id="particle11" class="hline"></div>
 <div id="particle12" class="vline"></div>
 
 <!-- #######################################################################################################################################################################################################################-->
 <textarea id="note_input" rows="12" cols="44"></textarea>
-<script>
-const textarea = document.querySelector("#note_input")
-textarea.onkeypress = (event) => {
-    const keyCode = event.keyCode
-    // console.log(`${event.code} key pressed`)
-    if (keyCode == 13) {
-        //event.preventDefault()
-        // this line prevents user from starting a new line, completely optional
-        
-        let x = document.getElementById("note_input").value
-        console.log(`${event.code} key pressed`)
-        console.log(x)
-        checkcommand(x)
-        alert(x)
+<p class="title" style="text-align: left; margin-left: 10px;">Trade Time</p>
+<div id="particle10" class="hline"></div>
+<div id="particle11" class="hline"></div>
+<div id="particle12" class="vline"></div>
 
-    }
-}
-</script>
+<!-- #######################################################################################################################################################################################################################-->
+<textarea id="note_input" rows="12" cols="44"></textarea>
 </div>
+
 
 <!-- Particles -->
 <!-- Left Menu Particles -->
