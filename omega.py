@@ -1,8 +1,5 @@
 import eel
-import time
-from datetime import datetime, timedelta, timezone
-import sys
-import subprocess
+import datetime
 eel.init('web')
 
 @eel.expose
@@ -57,18 +54,13 @@ def welcome():
         name= lines[0]
         gender=lines[2]
         print(gender)
-        if name is None:
-            speak("Hello. I am Omega, your personal trading assistant")
-            speak("Please proceed to settings page to setup Omega")
+        if gender.startswith("Male"):
+            speak("Hello sir, welcome back")
         else:
-            if gender.startswith("Male"):
-                speak("Hello sir, welcome back")
-            else:
-                speak('Hello Madam, welcome back')
+            speak('Hello Madam, welcome back')
     except Exception as e:
-        speak(e)
-        print(e)
-        speak("please proceed to the Settings section to set up the application")
+        speak("Hello. I am Omega, your personal trading assistant")
+        speak("Please proceed to settings page to setup Omega")
 @eel.expose
 def checkram():
     memory_info=ps.virtual_memory()
@@ -98,6 +90,23 @@ def checkDOJI():
     index_percent_change = soup.find('span', {'class': 'price-section__relative-value '}).text.strip()
     DOJI= str("DJIA: $"+ index_value + (index_change) + "(" + index_percent_change + "%)")
     return DOJI
+@eel.expose
+def hktime():
+    hong_kong_tz= datetime.timezone(datetime.timedelta(hours=8))
+    hong_kong_tz= datetime.datetime.now(hong_kong_tz)
+    hong_kong_tz=hong_kong_tz.time()
+    hong_kong_tz=hong_kong_tz.strftime("%H:%M:%S")
+    hong_kong_tz=str(hong_kong_tz) + " GMT +8"
+    return hong_kong_tz
+@eel.expose
+def nytime():
+    new_york_tz= datetime.timezone(datetime.timedelta(hours=-5))
+    new_york_tz=datetime.datetime.now(new_york_tz)
+    new_york_tz=new_york_tz.time()
+    new_york_tz=new_york_tz.strftime("%H:%M:%S")
+    new_york_tz=new_york_tz + " GMT -5"
+    return new_york_tz
+
 @eel.expose
 def usersettingwrite(username, usercity, user_gender, userdob):
     try:       

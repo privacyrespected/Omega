@@ -44,6 +44,18 @@ function callback3(DOJI){
 function checkDOJI(){
     eel.checkDOJI()(callback3)
 };
+function callback4(hong_kong_tz){
+    document.getElementById("hkt").innerHTML=hong_kong_tz
+};
+function hong_kong_tz(){
+    eel.hktime()(callback4)
+};
+function callback5(new_york_tz){
+    document.getElementById('nyt').innerHTML=new_york_tz
+};
+function new_york_tz(){
+    eel.nytime()(callback5)
+};
 function userconfirm() {
     var username = document.getElementById("username").value
     var usercity = document.getElementById("usercity").value

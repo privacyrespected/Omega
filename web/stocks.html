@@ -215,9 +215,24 @@ document.getElementById("config").addEventListener("click",config)
 <div id="particle10" class="hline"></div>
 <div id="particle11" class="hline"></div>
 <div id="particle12" class="vline"></div>
-
+<script>
+    setInterval(function(){hong_kong_tz();},10);
+    setInterval(function(){new_york_tz();},10);
+</script>
 <!-- #######################################################################################################################################################################################################################-->
-<textarea id="note_input" rows="12" cols="44"></textarea>
+<table style="width: 299px; height: 100px; border: 1px solid rgb(2,255,255);">
+    <tr style="height: 50%;">
+      <td style="width: 30%; border: 1px solid rgb(2,255,255);">NYT</td>
+      <td style="width: 70% ; border: 1px solid rgb(2,255,255);"><P id="nyt"></P></td>
+      <td style="width: 10% ; border: 1px solid rgb(2,255,255);"><P id = 'openstatus1'></P></td>
+    </tr>
+    <tr style="height: 50%;">
+      <td style="width: 30%; border: 1px solid rgb(2,255,255);">HKT</td> 
+      <td style="width: 70%; border: 1px solid rgb(2,255,255);"><p id = 'hkt'></p></td>
+      <td style="width: 10% ; border: 1px solid rgb(2,255,255);"><P id = 'openstatus2'></P></td>
+    </tr>
+  </table>
+  
 </div>
 
 
