@@ -38,10 +38,59 @@ def load_modules():
         engine.say(audio)
         engine.runAndWait()
     speak=pyttsx
+    import pytz
+    global timezones
+    timezones = pytz
+    import holidays
+    global hols
+    hols = holidays
     done = "1"
     eel.go_to('home.html')
     print('load done')
     return done
+@eel.expose()
+def marketstatus():
+    new_york_tz = datetime.timezone(datetime.timedelta(hours=-5), name='America/New_York')
+    us_holidays=hols.HK()
+    now=datetime.datetime.now(new_york_tz)
+    openTime=datetime.time(hour=9,minute=30,second=0)
+    closeTime= datetime.time(hour=16,minute=0, second=0)
+    if now.date() in us_holidays:
+        if (now.time()<openTime)or (now.time()>closeTime):
+            if now.date().weekday>4:
+                status = "OPEN"
+                return status
+            else:
+                status="CLOSED"
+                return status
+        else:
+            status="CLOSED"
+            return status
+    else:
+        status="CLOSED"
+        return status
+@eel.expose()
+def marketstatus1():
+    hong_kong_tz = datetime.timezone(datetime.timedelta(hours=8), name='Asia/Hong_Kong')
+    us_holidays=hols.US()
+    now=datetime.datetime.now(hong_kong_tz)
+    openTime=datetime.time(hour=9,minute=30,second=0)
+    closeTime= datetime.time(hour=16,minute=0, second=0)
+    if now.date() in us_holidays:
+        if (now.time()<openTime)or (now.time()>closeTime):
+            if now.date().weekday>4:
+                status = "OPEN"
+                return status
+            else:
+                status="CLOSED"
+                return status
+        else:
+            status="CLOSED"
+            return status
+    else:
+        status="CLOSED"
+        return status
+
 @eel.expose()
 def warningsound():
     print("warning sound")
@@ -90,13 +139,14 @@ def checkDOJI():
     index_percent_change = soup.find('span', {'class': 'price-section__relative-value '}).text.strip()
     DOJI= str("DJIA: $"+ index_value + (index_change) + "(" + index_percent_change + "%)")
     return DOJI
+
 @eel.expose
 def hktime():
     hong_kong_tz= datetime.timezone(datetime.timedelta(hours=8))
     hong_kong_tz= datetime.datetime.now(hong_kong_tz)
     hong_kong_tz=hong_kong_tz.time()
     hong_kong_tz=hong_kong_tz.strftime("%H:%M:%S")
-    hong_kong_tz=str(hong_kong_tz) + " GMT +8"
+    hong_kong_tz=str(hong_kong_tz) + " (GMT +8)"
     return hong_kong_tz
 @eel.expose
 def nytime():
@@ -104,7 +154,7 @@ def nytime():
     new_york_tz=datetime.datetime.now(new_york_tz)
     new_york_tz=new_york_tz.time()
     new_york_tz=new_york_tz.strftime("%H:%M:%S")
-    new_york_tz=new_york_tz + " GMT -5"
+    new_york_tz=new_york_tz + " (GMT -5)"
     return new_york_tz
 
 @eel.expose

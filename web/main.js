@@ -56,6 +56,18 @@ function callback5(new_york_tz){
 function new_york_tz(){
     eel.nytime()(callback5)
 };
+function callback6(status){
+    document.getElementById("openstatus1").innerHTML=status
+};
+function NYstatus(){
+    eel.marketstatus()(callback6)
+};
+function callback7(status){
+    document.getElementById('openstatus2').innerHTML=status
+};
+function HKstatus(){
+    eel.marketstatus1()(callback7)
+};
 function userconfirm() {
     var username = document.getElementById("username").value
     var usercity = document.getElementById("usercity").value
@@ -64,4 +76,9 @@ function userconfirm() {
     eel.usersettingwrite(username, usercity, user_gender, userdob) 
     go_to("home.html")
 
-}
+};
+
+function abortexit(){
+    alert("Are you sure you want to exit? Your progress may not be saved.")
+    go_to('home.html')
+};

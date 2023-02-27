@@ -23,3 +23,18 @@ now=now.time()
 now=now.strftime("%H:%M:%S")
 # Print the time
 print(now)
+
+import holidays as hols
+new_york_tz = datetime.timezone(datetime.timedelta(hours=-5), name='America/New_York')
+us_holidays=hols.US()
+now=datetime.datetime.now(new_york_tz)
+openTime=datetime.time(hour=9,minute=30,second=0)
+closeTime= datetime.time(hour=16,minute=0, second=0)
+if now.date() in us_holidays:
+    if (now.time()<openTime) or (now.time()>closeTime):
+        if now.date().weekday>4:
+            status="OPEN" #true
+            print(status)
+else:
+    status="CLOSE" #false
+    print(status)
