@@ -82,3 +82,11 @@ function abortexit(){
     alert("Are you sure you want to exit? Your progress may not be saved.")
     go_to('home.html')
 };
+function backhome(){
+    go_to('home.html')
+};
+function confirm_sentimental(){
+    var ticker = document.getElementById("ticker_sentimental").value
+    eel.sentiment(ticker)
+    go_to('sentimental_output.html')
+}

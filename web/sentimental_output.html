@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<title>OMEGA </title>
+<link rel="stylesheet" href="main-style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+<script>
+var i = 0;
+var txt = 'Sentimental Analysis';
+var speed = 110;
+
+function typeWriter() {
+if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+}
+}
+window.addEventListener('load', (event) => {
+        typeWriter()
+    });
+</script>
+<p class="menuitem" style="font-size: 40px; margin-left: 10px;" id="demo"></p>
+<img src='my_plot.png'/>
+
+<button type="button" class="menuitem" id="back" onclick="backhome()"><p class="caption">>Exit</p></button>

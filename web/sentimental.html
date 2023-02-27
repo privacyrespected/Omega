@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<html lang="en" >
+<head>
+<meta charset="UTF-8">
+<title>OMEGA </title>
+<link rel="stylesheet" href="main-style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="/eel.js"></script>
+</head>
+<body>
+<script>
+var i = 0;
+var txt = 'Sentimental Analysis';
+var speed = 110;
+
+function typeWriter() {
+if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+}
+}
+window.addEventListener('load', (event) => {
+        typeWriter()
+    });
+</script>
+<style>
+.inputbox {
+background-color: rgba(2,225,225,0.6);
+}
+.proceedbutton{
+    background: transparent;
+}
+.caption {
+    color: rgba(2, 255, 255, 0.6);
+    display: inline;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.caption:hover {
+    color: #02feff;
+}
+</style>
+<p class="menuitem" style="font-size: 40px; margin-left: 10px;" id="demo"></p>
+<p>Enter a valid ticker below to generate a sentimental analysis.</p>
+<p>Note: Sentimental analysis are commonly used for short hold trading or even tick by tick trading and should not be used as a primary analytical tool for identifying primary trend</p>
+
+<label for="ticker_sentimental">Ticker: </label>
+<input class="inputbox" type="text" id="ticker_sentimental" name="ticker_sentimental" size="50" required>
+<br>
+<br>
+
+<button type="button" class="menuitem" id="tickerconfirm" onclick="confirm_sentimental()"><p class="caption">>Confirm</p></button>
+<br>
+<br><br><br>
+<button type="button" class="menuitem" id="back" onclick="backhome()"><p class="caption">>Exit</p></button>
+</body>
