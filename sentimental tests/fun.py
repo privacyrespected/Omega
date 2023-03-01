@@ -21,16 +21,19 @@ print(tickers)
 #tickers =tickers[1:-1].split(',')
 
 for ticker in tickers:
-    url = finwiz_url + ticker
-    req = Request(url=url,headers={'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:20.0) Gecko/20100101 Firefox/20.0'}) 
-    response = urlopen(req)    
-    # Read the contents of the file into 'html'
-    html = BeautifulSoup(response)
-    # Find 'news-table' in the Soup and load it into 'news_table'
-    news_table = html.find(id='news-table')
-    # Add the table to our dictionary
-    news_tables[ticker] = news_table
-
+    try:
+        url = finwiz_url + ticker
+        req = Request(url=url,headers={'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:20.0) Gecko/20100101 Firefox/20.0'}) 
+        response = urlopen(req)    
+        # Read the contents of the file into 'html'
+        html = BeautifulSoup(response)
+        # Find 'news-table' in the Soup and load it into 'news_table'
+        news_table = html.find(id='news-table')
+        # Add the table to our dictionary
+        news_tables[ticker] = news_table
+    except Exception as e:
+        print(e)
+        break
 
 parsed_news = []
 
@@ -98,7 +101,7 @@ plt.rcParams.update({
     "savefig.edgecolor": "black"})
 
 ##############################################
-plt.rcParams['figure.figsize'] = [10, 6]
+plt.rcParams['figure.figsize'] = [20, 6]
 
 # Group by date and ticker columns from scored_news and calculate the mean
 mean_scores = parsed_and_scored_news.groupby(['ticker','date']).mean()
