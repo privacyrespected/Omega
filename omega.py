@@ -420,6 +420,11 @@ def nytime():
     return new_york_tz
 
 @eel.expose
+def sentimental_treemap():
+    import webbrowser
+    webbrowser.open('stock_sentiment.html', new=2)
+
+@eel.expose
 def usersettingwrite(username, usercity, user_gender, userdob):
     try:       
         open("data.txt", "w").close()
