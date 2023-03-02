@@ -89,4 +89,7 @@ function confirm_sentimental(){
     var ticker = document.getElementById("ticker_sentimental").value
     eel.sentiment(ticker)
     go_to('sentimental_output.html')
+};
+function opentreemap(){
+    eel.sentimental_treemap()
 }

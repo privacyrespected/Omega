@@ -91,20 +91,21 @@ print("section2")
 for ticker in tickers:
     symbol = ticker
     tkr = Ticker(symbol)
-
     # Get the regular market price for the symbol
     regular_market_price = tkr.price[symbol]['regularMarketPrice']
-    regular_market_price = str(regular_market_price)
     # Get the sector for the symbol
     sector = tkr.asset_profile[symbol]['sector']
-    sector = str(sector)
     # Get the industry for the symbol
     industry = tkr.asset_profile[symbol]['industry']
-    industry= str(industry)
     tickerdata= Ticker(symbol)
+    print(prices)
     prices.append(regular_market_price)
-    prices.append(sector)
-    prices.append(industry)
+    sectors.append(sector)
+    industries.append(industry)
+    print(regular_market_price)
+    print(sector)
+    print(industry)
+
 # dictionary {'column name': list of values for column} to be converted to dataframe
 d = {'Sector': sectors, 'Industry': industries, 'Price': prices, 'No. of Shares': number_of_shares}
 # create dataframe from 
@@ -118,6 +119,7 @@ df = df.reset_index()
 # the color of the chart follows the sentiment score
 # when the mouse is hovered over each box in the chart, the negative, neutral, positive and overall sentiment scores will all be shown
 # the color is red (#ff0000) for negative sentiment scores, black (#000000) for 0 sentiment score and green (#00FF00) for positive sentiment scores
+
 fig = px.treemap(df, path=[px.Constant("Sectors"), 'Sector', 'Industry', 'ticker'], values='Total Stock Value in Portfolio',
                   color='Sentiment Score', hover_data=['Price', 'Negative', 'Neutral', 'Positive', 'Sentiment Score'],
                   color_continuous_scale=['#FF0000', "#000000", '#00FF00'],
@@ -129,5 +131,4 @@ fig.data[0].texttemplate = "%{label}<br>%{customdata[4]}"
 fig.update_traces(textposition="middle center")
 fig.update_layout(margin = dict(t=30, l=10, r=10, b=10), font_size=20)
 
-plotly.offline.plot(fig, filename='stock_sentiment.html') # this writes the plot into a html file and opens it
-fig.show()
+plotly.offline.plot(fig, filename='stock_sentiment.html', auto_open=False) # this writes the plot into a html file and opens it
