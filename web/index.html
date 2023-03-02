@@ -1,34 +1,34 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" >
 <head>
-	<meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>OMEGA</title>
-	<script type="text/javascript" src="/eel.js"></script>
-	<script type="text/javascript" src="main.js"></script>
-	<link rel="stylesheet" type="text/css" href="style.css">
+<meta charset="UTF-8">
+<title>OMEGA</title>
+<link rel="stylesheet" href="./style.css">
+
 </head>
 <body onload="load_modules()">
-	<div class="omega" id="target"></div>
-	<script>
-        var i = 0;
-        var txt = 'OMEGA';
-        var speed = 170;
-        
-        function typeWriter() {
-            if (i < txt.length) {
-            document.getElementById("target").innerHTML += txt.charAt(i);
-            i++;
-            setTimeout(typeWriter, speed);
-            }
-        }
-        window.addEventListener('load', (event) => {
-                typeWriter()
-                });
-        </script>
-	<div class="loading">
-		<div class="spinner"></div>
-		<div class="loading-text">Loading...</div>
-	</div>
+<script>
+var i = 0;
+var txt = 'OMEGA';
+var speed = 150;
+
+function typeWriter() {
+    if (i < txt.length) {
+    document.getElementById("target").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+    }
+}
+window.addEventListener('load', (event) => {
+        typeWriter()
+        });
+</script>
+<!-- partial:index.partial.html -->
+<div class="omega" id="target"></div>
+<div class="loader">Loading...
+
+</div>
+<!-- partial -->
+
 </body>
 </html>

@@ -1,72 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Modal Popup Example</title>
-	<style>
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    right: 20px;
-    bottom: 20px;
-    width: 300px;
-    height: 200px;
-    background-color: black;
-    border: 5px solid #00feff;
-    color: #00feff;
-    padding: 20px;
-    text-align: center;
-    font-size: 20px;
-    font-weight: bold;
-    box-shadow: 0px 0px 10px #00feff;
-    animation-duration: 0.5s;
-    animation-name: slide-in;
-}
-@keyframes slide-in {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(0);
-    }
-}
-
-		.modal.active {
-			display: block;
-		}
-		.close-button {
-			position: absolute;
-			top: 10px;
-			right: 10px;
-			font-size: 25px;
-			color: #00feff;
-			cursor: pointer;
-		}
-		.close-button:hover {
-			color: white;
-		}
-	</style>
+	<meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>OMEGA</title>
+	<script type="text/javascript" src="/eel.js"></script>
+	<script type="text/javascript" src="main.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-	<div class="modal" id="modal">
-		<span class="close-button" onclick="toggleModal()">&times;</span>
-		<h1>This is a modal popup!</h1>
-	</div>
+<body onload="load_modules()">
+    <div class="omega" id="target"></div>
 	<script>
-        function toggleModal() {
-            var modal = document.getElementById("modal");
-            modal.classList.toggle("active");
-        }
+        var i = 0;
+        var txt = 'OMEGA';
+        var speed = 170;
         
-        function showPopup() {
-            setTimeout(function() {
-                var modal = document.getElementById("modal");
-                modal.classList.add("active");
-            }, 1000); // 5000 milliseconds = 5 seconds
+        function typeWriter() {
+            if (i < txt.length) {
+            document.getElementById("target").innerHTML += txt.charAt(i);
+            i++;
+            setTimeout(typeWriter, speed);
+            }
         }
-        
-        window.onload = showPopup;
+        window.addEventListener('load', (event) => {
+                typeWriter()
+                });
     </script>
-    
+    	<div class="loading">
+            <div class="loader">Loading...</div>
+            
+        </div>
 </body>
-</html>
