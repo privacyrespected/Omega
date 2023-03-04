@@ -1,0 +1,27 @@
+
+.menuitem {
+    width: 100%;
+    height: 40px;
+    padding: 5px;
+    margin-left: 5px;
+    color: #02feff;
+    background: transparent;
+    border: transparent;
+    font-size: 15px;
+    text-align: left;
+    display: block;
+    float: left;
+    transition: 0.3s;
+    cursor: pointer;
+  }
+.caption {
+  color: rgba(2, 255, 255, 0.6);
+  display: inline;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.caption:hover {
+  color: #02feff;
+}
+  

@@ -1,5 +1,6 @@
 import eel
 import datetime
+from datetime import datetime,time
 eel.init('web')
 
 @eel.expose
@@ -163,8 +164,9 @@ def load_modules():
         fig.update_traces(textposition="middle center")
         fig.update_layout(margin = dict(t=30, l=10, r=10, b=10), font_size=20)
 
-        plotly.offline.plot(fig, filename='stock_sentiment.html', auto_open=False) # this writes the plot into a html file and opens it
+        plotly.offline.plot(fig, filename='web/stock_sentiment.html', auto_open=False) # this writes the plot into a html file and opens it
     treemap()
+    
     import pyttsx3
     global speak
     def pyttsx(audio):
@@ -312,47 +314,44 @@ def sentiment(ticker):
     sentimental(ticker)
 @eel.expose()
 def marketstatus():
-    new_york_tz = datetime.timezone(datetime.timedelta(hours=-5), name='America/New_York')
-    us_holidays=hols.HK()
-    now=datetime.datetime.now(new_york_tz)
-    openTime=datetime.time(hour=9,minute=30,second=0)
-    closeTime= datetime.time(hour=16,minute=0, second=0)
-    if now.date() in us_holidays:
-        if (now.time()<openTime)or (now.time()>closeTime):
-            if now.date().weekday>4:
-                status = "OPEN"
-                return status
-            else:
-                status="CLOSED"
-                return status
+    from datetime import datetime,time
+    import datetime
+    new_york_tz = datetime.timezone(datetime.timedelta(hours=-5), name='America/New York')
+    now = datetime.datetime.now(new_york_tz).time()
+    start_time=time(9,30,0)
+    end_time= time(16,0,0)
+    today= datetime.datetime.today()
+    weekday = today.weekday()
+    if weekday<6:
+        if start_time <=now <=end_time:
+            status="OPEN"
+            return status
         else:
-            status="CLOSED"
+            status ="CLOSED"
             return status
     else:
         status="CLOSED"
         return status
 @eel.expose()
 def marketstatus1():
+    from datetime import datetime, time
+    import datetime
     hong_kong_tz = datetime.timezone(datetime.timedelta(hours=8), name='Asia/Hong_Kong')
-    us_holidays=hols.US()
-    now=datetime.datetime.now(hong_kong_tz)
-    openTime=datetime.time(hour=9,minute=30,second=0)
-    closeTime= datetime.time(hour=16,minute=0, second=0)
-    if now.date() in us_holidays:
-        if (now.time()<openTime)or (now.time()>closeTime):
-            if now.date().weekday>4:
-                status = "OPEN"
-                return status
-            else:
-                status="CLOSED"
-                return status
+    now = datetime.datetime.now(hong_kong_tz).time()
+    start_time=time(9,30,0)
+    end_time= time(16,0,0)
+    today= datetime.datetime.today()
+    weekday = today.weekday()
+    if weekday<6:
+        if start_time <=now <=end_time:
+            status="OPEN"
+            return status
         else:
-            status="CLOSED"
+            status ="CLOSED"
             return status
     else:
         status="CLOSED"
         return status
-
 @eel.expose()
 def warningsound():
     print("warning sound")
@@ -404,6 +403,7 @@ def checkDOJI():
 
 @eel.expose
 def hktime():
+    import datetime
     hong_kong_tz= datetime.timezone(datetime.timedelta(hours=8))
     hong_kong_tz= datetime.datetime.now(hong_kong_tz)
     hong_kong_tz=hong_kong_tz.time()
@@ -412,6 +412,7 @@ def hktime():
     return hong_kong_tz
 @eel.expose
 def nytime():
+    import datetime 
     new_york_tz= datetime.timezone(datetime.timedelta(hours=-5))
     new_york_tz=datetime.datetime.now(new_york_tz)
     new_york_tz=new_york_tz.time()
@@ -446,8 +447,5 @@ def usersettingwrite(username, usercity, user_gender, userdob):
     except Exception as e:
         print(e)
 
-try:
 
-    eel.start('index.html', mode='chrome', port=8080, size=(1980,1028))
-except Exception as e:
-    print(e)
+eel.start('index.html', mode='chrome', size=(1980,1028),cmdline_args=['--start-fullscreen'])

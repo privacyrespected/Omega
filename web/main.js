@@ -85,6 +85,9 @@ function abortexit(){
 function backhome(){
     go_to('home.html')
 };
+function backhome1(){
+    go_to('home.html')
+};
 function confirm_sentimental(){
     var ticker = document.getElementById("ticker_sentimental").value
     eel.sentiment(ticker)
