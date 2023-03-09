@@ -222,30 +222,37 @@ document.getElementById("sentimental").addEventListener("click",sentimental)
 
 <!-- Right Menu -->
 <div id="rightmenu">
-<p class="title" style="text-align: left; margin-left: 10px;">World Time</p>
+<p class="title" style="text-align: left; margin-left: 10px;">Index</p>
 <div id="particle10" class="hline"></div>
 <div id="particle11" class="hline"></div>
 <div id="particle12" class="vline"></div>
 
 <!-- #######################################################################################################################################################################################################################-->
+<textarea id="note_input" rows="12" cols="44"></textarea>
+<p class="title" style="text-align: left; margin-left: 10px;">Trade Time</p>
+<div id="particle10" class="hline"></div>
+<div id="particle11" class="hline"></div>
+<div id="particle12" class="vline"></div>
 <script>
     setInterval(function(){hong_kong_tz();},10);
     setInterval(function(){new_york_tz();},10);
+    setInterval(function(){NYstatus();},10);
+    setInterval(function(){HKstatus();},10);
 </script>
 <!-- #######################################################################################################################################################################################################################-->
 <table style="width: 299px; height: 100px; border: 1px solid rgb(2,255,255);">
     <tr style="height: 50%;">
-      <td style="width: 30%; border: 1px solid rgb(2,255,255);">NYT</td>
-      <td style="width: 70% ; border: 1px solid rgb(2,255,255);"><P id="nyt"></P></td>
-      <td style="width: 10% ; border: 1px solid rgb(2,255,255);"><P id = 'openstatus1'></P>closed</td>
+        <td style="width: 20%; border: 1px solid rgb(2,255,255);">NYT</td>
+        <td style="width: 70% ; border: 1px solid rgb(2,255,255);"><P id="nyt"></P></td>
+        <td style="width: 10% ; border: 1px solid rgb(2,255,255);"><P id = 'openstatus1'></P></td>
     </tr>
     <tr style="height: 50%;">
-      <td style="width: 30%; border: 1px solid rgb(2,255,255);">HKT</td> 
-      <td style="width: 70%; border: 1px solid rgb(2,255,255);"><p id = 'hkt'></p></td>
-      <td style="width: 10% ; border: 1px solid rgb(2,255,255);"><P id = 'openstatus2'></P>closed</td>
+        <td style="width: 30%; border: 1px solid rgb(2,255,255);">HKT</td> 
+        <td style="width: 70%; border: 1px solid rgb(2,255,255);"><p id = 'hkt'></p></td>
+        <td style="width: 10% ; border: 1px solid rgb(2,255,255);"><P id = 'openstatus2'></P></td>
     </tr>
-  </table>
-
+    </table>
+    
 </div>
 
 

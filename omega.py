@@ -423,7 +423,7 @@ def nytime():
 @eel.expose
 def sentimental_treemap():
     import webbrowser
-    webbrowser.open('stock_sentiment.html', new=2)
+    webbrowser.open('web/stock_sentiment.html', new=2)
 
 @eel.expose
 def usersettingwrite(username, usercity, user_gender, userdob):
